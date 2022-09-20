@@ -98,3 +98,5 @@ RUN jupyter labextension install luxwidget
 #----------- jupyter neon theme
 RUN jupyter labextension install @yeebc/jupyterlab_neon_theme
 
+#---------- pysftp
+RUN pip3 install pysftp
