@@ -58,24 +58,6 @@ RUN pip install \
     pycountry \
     icecream
 
-#------------- dagster
-RUN pip install dagster \
-    dagster-graphql \
-    dagit \
-    dagster-postgres \
-    dagster-mysql \
-    dagster-github \
-    dagster-gcp \
-    dagster-slack \
-    dagster-pandera \
-    dagster-pandas \
-    dagstermill
-
-#------------ open ssh
-RUN apt install openssh-server -y --fix-missing
-# authorize SSH connection with root account
-RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
-
 #------------ dbt
 RUN pip install \
   dbt-core \
@@ -100,3 +82,26 @@ RUN jupyter labextension install @yeebc/jupyterlab_neon_theme
 
 #---------- pysftp
 RUN pip3 install pysftp
+
+#------------ open ssh
+RUN apt install openssh-server -y --fix-missing
+# authorize SSH connection with root account
+RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+#---------- jupyter lite
+RUN pip3 install --pre jupyterlite
+
+#------------- dagster
+RUN pip install dagster \
+    dagster-graphql \
+    dagit \
+    dagster-postgres \
+    dagster-mysql \
+    dagster-github \
+    dagster-gcp \
+    dagster-slack \
+    dagster-pandera \
+    dagster-pandas \
+    dagstermill
+
+
