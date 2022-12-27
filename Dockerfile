@@ -1,4 +1,4 @@
-FROM python:3.10.5-slim-bullseye
+FROM python:3.10-slim-bullseye
 
 RUN apt update
 RUN apt-get install wget curl grep sed dpkg nano procps cron git -y
@@ -38,6 +38,7 @@ RUN pip install  \
   pyarrow 
 RUN pip install  \
   lxml \
+  html5lib \
   jmespath 
 
 RUN pip install  \
@@ -56,13 +57,15 @@ RUN pip install jupyterlab jupyterlab-git toml
 #------------- autres packages python
 RUN pip install \
     pycountry \
-    icecream
+    icecream \
+    typeform \
+    duckdb
 
 #------------ dbt
-RUN pip install \
-  dbt-core \
-  dbt-postgres \
-  dbt-bigquery
+#RUN pip install \
+#  dbt-core \
+#  dbt-postgres \
+#  dbt-bigquery
 
 #------------ postgres client
 RUN apt install postgresql-client -y
@@ -84,14 +87,11 @@ RUN jupyter labextension install @yeebc/jupyterlab_neon_theme
 RUN pip3 install pysftp
 
 #------------ open ssh
-RUN apt install openssh-server -y --fix-missing
+# RUN apt install openssh-server -y --fix-missing
 # authorize SSH connection with root account
-RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+# RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 
-#---------- jupyter lite
-RUN pip3 install --pre jupyterlite
-
-#------------- dagster
+#------------- dagsteri
 RUN pip install dagster \
     dagster-graphql \
     dagit \
