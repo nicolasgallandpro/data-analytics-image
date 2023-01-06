@@ -54,13 +54,6 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs
 RUN pip install jupyterlab jupyterlab-git toml
 
-#------------- autres packages python
-RUN pip install \
-    pycountry \
-    icecream \
-    typeform \
-    duckdb
-
 #------------ dbt
 #RUN pip install \
 #  dbt-core \
@@ -90,6 +83,13 @@ RUN pip3 install pysftp
 # RUN apt install openssh-server -y --fix-missing
 # authorize SSH connection with root account
 # RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+#------------- autres packages python
+RUN pip install \
+    pycountry \
+    icecream \
+    typeform \
+    duckdb-engine
 
 #------------- dagsteri
 RUN pip install dagster \
