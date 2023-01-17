@@ -1,4 +1,4 @@
-FROM python:3.10-slim-bullseye
+FROM python:3.11-slim-bullseye
 
 RUN apt update
 RUN apt-get install wget curl grep sed dpkg nano procps cron git -y
@@ -89,9 +89,10 @@ RUN pip install \
     pycountry \
     icecream \
     typeform \
+    streamlit \
     duckdb-engine
 
-#------------- dagsteri
+#------------- dagster
 RUN pip install dagster \
     dagster-graphql \
     dagit \
