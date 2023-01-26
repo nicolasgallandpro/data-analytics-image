@@ -1,6 +1,7 @@
 # data-analytics-image
 A docker image for data analytics : python 3.11, dagster 1.x, jupyter, lux, pandas, streamlit, ...
 
+- v4.3 : +fsspec +s3fs
 - v4.2 : python 3.11 (!), dagster=>1.1.10, retour de streamlit
 - v4.1 : dagster=>1.1.8, +duckdb-engine
 - v4.0 : +typeform, +duckdb, -openssh, -jupyterlite, dagster->1.1.7, (streamlit ne fonctionne plus dans cette version, incompatibilité de dépendance python)

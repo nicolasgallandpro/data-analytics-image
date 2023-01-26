@@ -105,4 +105,5 @@ RUN pip install dagster \
     dagster-pandas \
     dagstermill
 
-
+#------- pythoh s3
+RUN pip install fsspec s3fs
