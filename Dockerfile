@@ -1,9 +1,14 @@
-FROM python:3.11-slim-bullseye
+#FROM python:3.11-slim-bullseye
+FROM python:3.10.10-slim-bullseye
 
 RUN apt update
 RUN apt-get install wget curl grep sed dpkg nano procps cron git -y
+#RUN apt install build-essential -y
+RUN pip install --upgrade pip
+RUN python3 -m pip install --upgrade setuptools
 
-RUN pip install  \
+#------------ python dépendances de base
+RUN pip install polars  \
   numpy \
   scipy \
   matplotlib  \
@@ -66,18 +71,11 @@ RUN apt install postgresql-client -y
 #----------- streamlit + altair
 RUN pip install streamlit altair feedzai-altair-theme
 
-#----------- lux
-RUN pip install lux-api
-RUN jupyter nbextension install --py luxwidget
-RUN jupyter nbextension enable --py luxwidget
-RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
-RUN jupyter labextension install luxwidget
-
 #----------- jupyter neon theme
-RUN jupyter labextension install @yeebc/jupyterlab_neon_theme
+#RUN jupyter labextension install @yeebc/jupyterlab_neon_theme
 
-#---------- pysftp
-RUN pip3 install pysftp
+#------- dépendances gestion de fichier (s3 et sftp)
+RUN pip install fsspec s3fs pysftp
 
 #------------ open ssh
 # RUN apt install openssh-server -y --fix-missing
@@ -105,5 +103,3 @@ RUN pip install dagster \
     dagster-pandas \
     dagstermill
 
-#------- pythoh s3
-RUN pip install fsspec s3fs
