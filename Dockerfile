@@ -1,5 +1,5 @@
-#FROM python:3.11-slim-bullseye
-FROM python:3.10.10-slim-bullseye
+FROM python:3.11-slim-bullseye
+#FROM python:3.10.10-slim-bullseye
 
 RUN apt update
 RUN apt-get install wget curl grep sed dpkg nano procps cron git -y
