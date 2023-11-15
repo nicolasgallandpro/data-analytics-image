@@ -1,6 +1,5 @@
 FROM python:3.11-slim-bullseye
-#FROM python:3.10.10-slim-bullseye
-
+RUN echo "force rebuild"
 RUN apt update
 RUN apt-get install wget curl grep sed dpkg nano procps cron git -y
 #RUN apt install build-essential -y
@@ -36,6 +35,10 @@ RUN pip install  \
   psycopg2-binary \
   flask \
   flask-cors 
+RUN pip install \
+  altair_saver \
+  squarify \
+  sparklines
 
 RUN pip install \
   boto3 
@@ -68,14 +71,13 @@ RUN pip install jupyterlab jupyterlab-git toml
 #------------ postgres client
 RUN apt install postgresql-client -y
 
-#----------- streamlit + altair
-RUN pip install streamlit altair feedzai-altair-theme
-
-#----------- jupyter neon theme
-#RUN jupyter labextension install @yeebc/jupyterlab_neon_theme
+#----------- altair
+RUN pip install altair feedzai-altair-theme
 
 #------- dépendances gestion de fichier (s3 et sftp)
-RUN pip install fsspec s3fs pysftp
+RUN pip install pysftp
+RUN pip install fsspec
+RUN pip install s3fs 
 
 #------------ open ssh
 # RUN apt install openssh-server -y --fix-missing
@@ -85,9 +87,9 @@ RUN pip install fsspec s3fs pysftp
 #------------- autres packages python
 RUN pip install \
     pycountry \
-    icecream \
     typeform \
-    streamlit \
+    icecream \
+    duckdb \
     duckdb-engine
 
 #------------- dagster
