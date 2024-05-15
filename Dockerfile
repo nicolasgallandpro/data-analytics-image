@@ -88,6 +88,7 @@ RUN pip install \
     duckdb-engine
 
 #------------- dagster
+RUN echo "force rebuild "
 RUN pip install dagster \
     dagster-graphql \
     dagit \

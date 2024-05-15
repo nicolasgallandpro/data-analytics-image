@@ -1,6 +1,7 @@
 # data-analytics-image
 A docker image for data analytics : python 3.11, dagster 1.x, jupyter, lux, pandas, streamlit, ...
 
+- v4.9 : dagster 1.7.5
 - v4.8 : dagster 1.6.13, pandas 2.2.1
 - v4.7 : dagster 1.5.6, pandas 2.1.2
 - v4.5 : python=>3.11, dagster=>1.2.2
